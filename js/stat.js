@@ -50,7 +50,7 @@ var renderGraphs = function (ctx, names, times, titleParams) {
   var x = X_GRAPH_START; // Координата х первого графика
 
   // Цикл по количеству игроков
-  times.forEach(function (time, i, array) {
+  times.forEach(function (time, i) {
     var curHeight = (GRAPH_HEIGHT * time) / maxTime; // Высота текущего графика, пропорция
     // Текст над графиком
     ctx.fillStyle = TEXT_COLOR;

@@ -37,10 +37,10 @@ var renderTitle = function (ctx) {
   var yText = Y_START + textHeight;
   ctx.fillStyle = TEXT_COLOR;
   ctx.font = TEXT_FONT;
-  for (var i = 0; i < TITLE_CAPTIONS.length; i++) {
-    ctx.fillText(TITLE_CAPTIONS[i], X_START + CLOUD_WIDTH / 2 - (ctx.measureText(TITLE_CAPTIONS[i]).width / 2), yText);
+  TITLE_CAPTIONS.forEach(function (caption) {
+    ctx.fillText(caption, X_START + CLOUD_WIDTH / 2 - (ctx.measureText(caption).width / 2), yText);
     yText += textHeight;
-  }
+  });
   return {yText: yText, textHeight: textHeight};
 };
 
@@ -50,11 +50,11 @@ var renderGraphs = function (ctx, names, times, titleParams) {
   var x = X_GRAPH_START; // Координата х первого графика
 
   // Цикл по количеству игроков
-  for (var i = 0; i < times.length; i++) {
-    var curHeight = (GRAPH_HEIGHT * times[i]) / maxTime; // Высота текущего графика, пропорция
+  times.forEach(function (time, i, array) {
+    var curHeight = (GRAPH_HEIGHT * time) / maxTime; // Высота текущего графика, пропорция
     // Текст над графиком
     ctx.fillStyle = TEXT_COLOR;
-    ctx.fillText(Math.round(times[i]), x, titleParams.yText + titleParams.textHeight + (GRAPH_HEIGHT - curHeight) - FONT_HEIGHT_OFFSET);
+    ctx.fillText(Math.round(time), x, titleParams.yText + titleParams.textHeight + (GRAPH_HEIGHT - curHeight) - FONT_HEIGHT_OFFSET);
 
     // График
     if (names[i] === CURRENT_USER_NAME) {
@@ -70,7 +70,7 @@ var renderGraphs = function (ctx, names, times, titleParams) {
 
     // Координата х следующего графика
     x += GRAPH_OFFSET + GRAPH_WIDTH;
-  }
+  })
 };
 
 // Вывод облака

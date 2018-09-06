@@ -87,10 +87,10 @@ var fillElements = function (elements, wizards) {
     name.textContent = wizards[i].name;
 
     var coat = el.querySelector('.wizard-coat');
-    coat.style = 'fill: ' + wizards[i].coatColor;
+    coat.style.fill = wizards[i].coatColor;
 
     var eyes = el.querySelector('.wizard-eyes');
-    eyes.style = 'fill: ' + wizards[i].eyesColor;
+    eyes.style.fill = wizards[i].eyesColor;
 
     fragment.appendChild(el);
   });

@@ -48,14 +48,6 @@ var getRandElement = function (array) {
   return array[randIndex];
 };
 
-// Отображение блока .setup
-var beginSetup = function () {
-  var divSetup = document.querySelector('.setup');
-  if (divSetup) {
-    divSetup.classList.remove('hidden');
-  }
-};
-
 // Генерация массива данных вошебников
 var generateData = function (wizardCount) {
   var wizardData = [];
@@ -98,16 +90,21 @@ var fillElements = function (elements, wizards) {
 };
 
 // Отображение элементов волшебников
-var endSetup = function (fragment) {
+var addElement = function (fragment, selector) {
   var setupList = document.querySelector('.setup-similar-list');
   setupList.appendChild(fragment);
+}
 
-  var setupSimilar = document.querySelector('.setup-similar');
-  setupSimilar.classList.remove('hidden');
-};
+var showElement = function (selector) {
+  var element = document.querySelector(selector);
+  if(element) {
+    element.classList.remove('hidden');
+  }
+}
 
-beginSetup();
+showElement('.setup');
 var wizards = generateData(WIZARD_COUNT);
 var elements = makeElements(wizards.length);
 var fragment = fillElements(elements, wizards);
-endSetup(fragment);
+addElement(fragment, '.setup-similar-list');
+showElement('.setup-similar');

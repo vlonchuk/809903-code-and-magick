@@ -70,7 +70,7 @@ var renderGraphs = function (ctx, names, times, titleParams) {
 
     // Координата х следующего графика
     x += GRAPH_OFFSET + GRAPH_WIDTH;
-  })
+  });
 };
 
 // Вывод облака

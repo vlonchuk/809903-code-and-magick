@@ -75,9 +75,13 @@
   };
 
   // Вывод облака
-  window.renderStatistics = function (ctx, names, times) {
+  var renderStatistics = function (ctx, names, times) {
     renderCloud(ctx);
     var titleParams = renderTitle(ctx);
     renderGraphs(ctx, names, times, titleParams);
+  };
+
+  window.stat = {
+    renderStatistics: renderStatistics
   };
 })();
